@@ -1,0 +1,21 @@
+# Maintainer: Novus <novusoh01@outlook.com>
+
+pkgname=novos-mirrorlist
+pkgver=20221214
+pkgrel=1
+pkgdesc='NovOS mirrorlist for all repos'
+arch=('any')
+url='https://github.com/NovOS-Linux/novos-reposources'
+license=('MIT')
+source=("$url/archive/$pkgver.tar.gz")
+sha512sums=('SKIP')
+
+package() {
+cd "$srcdir/novos-reposources-$pkgver"
+
+install -Dm644 novos-core-mirrors $pkgdir/etc/pacman.d/novos-core-mirrors
+install -Dm644 novos-community-mirrors $pkgdir/etc/pacman.d/novos-community-mirrors
+install -Dm644 novos-testing-mirrors $pkgdir/etc/pacman.d/novos-testing-mirrors
+install -Dm644 novos4-testing $pkgdir/etc/pacman.d/novos4-testing-mirrors
+}
+
